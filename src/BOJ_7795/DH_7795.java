@@ -1,4 +1,3 @@
-/*
 package BOJ_7795;
 
 import java.io.BufferedReader;
@@ -7,7 +6,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main {
+public class DH_7795 {
     static int t;
     static int n, m;
     static int[] arrN, arrM;
@@ -79,4 +78,3 @@ public class Main {
         return result;
     }
 }
-*/
