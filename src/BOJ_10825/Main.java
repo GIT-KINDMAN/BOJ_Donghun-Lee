@@ -1,3 +1,4 @@
+/*
 package BOJ_10825;
 
 import java.io.BufferedReader;
@@ -54,7 +55,8 @@ class Score implements Comparator<String[]> {
         //1순위: 국어점수 = 내림차순
         return Integer.compare(Integer.parseInt(s2[1]), Integer.parseInt(s1[1]));
     }
-
+}
+*/
     /*
     String name;
     String kor;
@@ -108,4 +110,3 @@ class Score implements Comparator<String[]> {
         //1순위: 국어점수 = 내림차순
         return Integer.compare(s2.kor, s1.kor);
     }*/
-}
