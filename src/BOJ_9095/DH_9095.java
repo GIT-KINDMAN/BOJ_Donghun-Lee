@@ -3,13 +3,10 @@ package BOJ_9095;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
-//import java.util.Arrays;
-import java.util.StringTokenizer;
 
 public class DH_9095 {
-    static int t;
-    static int n, m;
-    static int[] arrN, arrM;
+    static int t, N;
+    static int[] arr = new int[12];
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
@@ -17,6 +14,12 @@ public class DH_9095 {
         //tc 개수 입력
         t = Integer.parseInt(br.readLine());
 
+        arr[0]= 0;
+        arr[1]= 1;
+        arr[2]= 2;
+        arr[3]= 4;
+        arr[4]= 7; 
+        
         for(int i=0; i<t; i++) {
             inputTC();
             outputTC();
@@ -24,17 +27,14 @@ public class DH_9095 {
     }
 
     static void inputTC() throws IOException {
-
-        StringTokenizer st;
-
-        // N, M 원소 갯수 입력
-        st = new StringTokenizer(br.readLine());
-        n = Integer.parseInt(st.nextToken());
-        m = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(br.readLine());
+        for(int i=5;i<11;i++) {
+            arr[i] = arr[i-1] + arr[i-2] + arr[i-3];
+        }
         
     }
 
-    static void outputTC() {
-        System.out.println();
+    static void outputTC() throws IOException {
+        System.out.println(arr[N]);
     }
 }
