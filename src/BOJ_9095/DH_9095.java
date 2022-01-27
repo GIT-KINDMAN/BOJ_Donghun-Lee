@@ -29,7 +29,8 @@ public class DH_9095 {
     static void inputTC() throws IOException {
         N = Integer.parseInt(br.readLine());
         for(int i=5;i<11;i++) {
-            arr[i] = arr[i-1] + arr[i-2] + arr[i-3];
+            // 점화식
+            arr[i] = arr[i-1] + arr[i-2] + arr[i-3]; 
         }
         
     }
