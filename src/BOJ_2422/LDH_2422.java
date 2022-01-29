@@ -15,7 +15,6 @@ public class LDH_2422 {
     }
     
     private static void Star(int N) {
-        System.out.println("문제5)");
         for (int i = 1; i <= N; i++) {
             for (int j = N - i; j >= 1; j--) {
                 System.out.print(" ");
