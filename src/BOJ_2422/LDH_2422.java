@@ -9,12 +9,12 @@ public class LDH_2422 {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
 
-        Pyramid(N);
+        pyramid(N);
 
         sc.close();
     }
     
-    private static void Pyramid(int N) {
+    private static void pyramid(int N) {
         for (int i = 1; i <= N; i++) {
             for (int j = N - i; j >= 1; j--) {
                 System.out.print(" ");
