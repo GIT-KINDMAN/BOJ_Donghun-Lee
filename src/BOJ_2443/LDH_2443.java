@@ -10,7 +10,9 @@ public class LDH_2443 {
     private static void execute() {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
+
         invertedPyramid(N);
+        
         sc.close();
     }
 
