@@ -1,9 +1,8 @@
-package BOJ_2422;
+package BOJ_2442;
 
 import java.util.Scanner;
 
-public class LDH_2422 {
-
+public class LDH_2442 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
