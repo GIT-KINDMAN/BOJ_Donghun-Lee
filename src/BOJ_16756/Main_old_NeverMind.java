@@ -46,7 +46,7 @@ public class Main_old_NeverMind {
 
         ArrayList<Integer> listMin = new ArrayList<Integer>(countMin);
         ArrayList<Integer> listMax = new ArrayList<Integer>(countMax);
-
+ 
         // 모든 최소, 최대값 indexOf
         for (int i=0; i<N; i++) {
             if(min == list[i]) listMin.add(i);

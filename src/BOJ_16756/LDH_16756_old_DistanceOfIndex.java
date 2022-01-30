@@ -12,7 +12,6 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
 
-
 public class LDH_16756_old_DistanceOfIndex {
 
     public static void main(String args[]) throws Exception {
