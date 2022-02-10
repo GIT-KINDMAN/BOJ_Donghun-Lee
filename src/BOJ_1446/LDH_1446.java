@@ -22,7 +22,7 @@ public class LDH_1446 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         int T = Integer.parseInt(st.nextToken());
-        int firstDistance = Integer.parseInt(st.nextToken());
+        int initDistance = Integer.parseInt(st.nextToken());
 
         List<Road> list = new ArrayList<Road>();
 
@@ -31,7 +31,7 @@ public class LDH_1446 {
             int start = Integer.parseInt(st.nextToken());
             int end = Integer.parseInt(st.nextToken());
             int distance = Integer.parseInt(st.nextToken());
-            if (end > firstDistance) continue;
+            if (end > initDistance) continue;
             if (end - start <= distance) continue;
             list.add(new Road(start, end, distance));
         }
@@ -49,22 +49,11 @@ public class LDH_1446 {
         for (int i=0; i<dist.length; i++) {
             dist[i] =0;
         }
-        // 다익스트라
-        while (move < firstDistance) {
-            if (idx < list.size()) {
-                Road r = list.get(idx);
-                if (move == r.start) {
-                    dist[r.end] = Math.min(dist[move] + r.distance, dist[r.end]);
-                    idx++;
-                } else {
-                    dist[move + 1] = Math.min(dist[move + 1], dist[move] + 1);
-                    move++;
-                }
-            } else {
-                dist[move + 1] = Math.min(dist[move + 1], dist[move] + 1);
-                move++;
-            }
-        }
-        System.out.println(dist[firstDistance]);
+
+        // 다익스트라 구현
+        
+        // 못풀었음... 주말에
+
+        System.out.println(dist[initDistance]);
     }
 }
