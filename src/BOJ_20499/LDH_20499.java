@@ -19,7 +19,7 @@ public class LDH_20499 {
 		} else {
 			System.out.println("gosu");
 		}
-
+        sc.close();
 	}
 
 }
