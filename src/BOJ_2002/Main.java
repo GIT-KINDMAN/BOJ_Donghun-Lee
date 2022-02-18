@@ -29,6 +29,7 @@ public class Main {
                     break;
                 }
             }
+            map.remove(car);    // 이중 체크 방지
         }
 
         System.out.println(count);

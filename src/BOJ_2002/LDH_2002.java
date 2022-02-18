@@ -24,11 +24,12 @@ public class LDH_2002 {
         for(int i=0;i<N;i++) {
             String car = br.readLine();
             for(String j : map.keySet()) {
-                if (map.get(j) < map.get(car)) { // 12345 5432 1, 12345 2345 1 반례. 결국 i j 대비 비교탐색 필요
+                if (map.get(j) < map.get(car)) { // 12345 5432 1 반례. 결국 i j 대비 비교탐색 필요
                     count++;
                     break;
                 }
             }
+            map.remove(car);    // 이중 체크 방지
         }
 
         System.out.println(count);
