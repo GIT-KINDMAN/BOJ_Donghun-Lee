@@ -38,7 +38,7 @@ public class Main {
 
         for (int i = 1; i <= m.length - 1; i++) {
             if (!visited[i]) {
-                dfs(, ,);
+                dfs(i,m,visited);
             }
         }
     }
