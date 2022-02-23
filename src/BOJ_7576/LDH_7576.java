@@ -6,18 +6,12 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
-
-class Dot {
-    int x, y;
-
-    Dot(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-}
-
 public class LDH_7576 {
-
+	public static Character map[][];
+	public static boolean visit[][];
+	public static int dy[] = {1, 0, -1, 0};
+	public static int dx[] = {0, 1, 0, -1};
+	public static int b = 0, w = 0 , N,M,c;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
