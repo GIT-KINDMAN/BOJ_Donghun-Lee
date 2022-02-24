@@ -1,9 +1,7 @@
 package BOJ_2573;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -19,15 +17,14 @@ class IceBerg {
 }
  
 public class Main {
-    static int[] rangeX = { -1, 0, 1, 0 };
-    static int[] rangeY = { 0, 1, 0, -1 };
+    static int[] dX = { -1, 0, 1, 0 };
+    static int[] dY = { 0, 1, 0, -1 };
  
     static int N, M;
     static int[][] map;
  
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
  
         N = Integer.parseInt(st.nextToken());
@@ -42,12 +39,11 @@ public class Main {
         }
  
         int ans = 0;
-        int cnt = 0;
+        int count = 0;
  
-        // 빙하가 2개 이상 분리될 경우 반복문을 종료.
-        // 빙하가 다 녹아버렸을 경우, 0을 출력.
-        while ((cnt = SeparateNum()) < 2) {
-            if (cnt == 0) {
+        // 2개 이상 분리시 종료 + 모든 원소가 0이면 0 출력
+        while ((count = SeparateNum()) < 2) {
+            if (count == 0) {
                 ans = 0;
                 break;
             }
@@ -56,56 +52,49 @@ public class Main {
             ans++;
         }
  
-        bw.write(ans + "\n");
-        bw.flush();
-        bw.close();
+        System.out.println(ans);
         br.close();
     }
  
-    // 빙하가 분리된 개수를 구하는 함수.
+    // 나눠진거 몇개? -> DFS
     public static int SeparateNum() {
         boolean[][] visited = new boolean[N][M];
  
-        int cnt = 0;
+        int count = 0;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 if (map[i][j] != 0 && !visited[i][j]) {
-                    DFS(i, j, visited); // DFS 방식을 통해 총 몇개의 빙하로 나누어졌는지 구할 수 있음.
-                    cnt++;
+                    DFS(i, j, visited);
+                    count++;
                 }
             }
         }
-        return cnt;
+        return count;
     }
  
     public static void DFS(int x, int y, boolean[][] visited) {
         visited[x][y] = true;
  
-        int dx, dy;
+        int nx, ny;
         for (int i = 0; i < 4; i++) {
-            dx = x + rangeX[i];
-            dy = y + rangeY[i];
+            nx = x + dX[i];
+            ny = y + dY[i];
  
-            if (dx < 0 || dy < 0 || dx >= N || dy >= M) {
+            if (nx < 0 || ny < 0 || nx >= N || ny >= M) {
                 continue;
             }
  
-            if (map[dx][dy] != 0 && !visited[dx][dy]) {
-                DFS(dx, dy, visited);
+            if (map[nx][ny] != 0 && !visited[nx][ny]) {
+                DFS(nx, ny, visited);
             }
         }
     }
  
-    // 빙하를 녹이는 함수.
+    // BFS
     public static void Melt() {
         Queue<IceBerg> q = new LinkedList<>();
  
-        // visited 배열을 만드는 이유
- 
-        // visited 배열이 없다면,
-        // 만약 1 2 가 있는 상태에서 1이 먼저 녹아서 0이 될 경우
-        // 2는 녹아서 없어진 1 자리도 0이라고 판단하여
-        // 필요 이상으로 더 많은 값을 녹이게 되어 버림.
+        // 중복되어 삭제되는 문제(인접 바다)를 방지하기 위한 visited 배열
         boolean[][] visited = new boolean[N][M];
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
@@ -120,11 +109,11 @@ public class Main {
         while (!q.isEmpty()) {
             IceBerg ice = q.poll();
  
-            int seaNum = 0; // 빙하 상하좌우에 존재하는 바다 영역의 수.
+            int seaNum = 0; // 인접 바다 영역
  
             for (int i = 0; i < 4; i++) {
-                dx = ice.x + rangeX[i];
-                dy = ice.y + rangeY[i];
+                dx = ice.x + dX[i];
+                dy = ice.y + dY[i];
  
                 if (dx < 0 || dy < 0 || dx >= N || dy >= M) {
                     continue;
