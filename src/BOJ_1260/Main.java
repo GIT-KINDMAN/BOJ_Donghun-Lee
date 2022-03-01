@@ -24,7 +24,7 @@ public class Main {
 		
 		V = Integer.parseInt(st.nextToken());
 		E = Integer.parseInt(st.nextToken());
-		int V = Integer.parseInt(st.nextToken());
+		int start = Integer.parseInt(st.nextToken());
 		
 		graph = new int[V+1][E+1];
 		
@@ -37,11 +37,11 @@ public class Main {
 			graph[node2][node1] = 1;
 		}
 		
-		dfs(V);
+		dfs(start);
 		sb.append("\n");
 		Arrays.fill(visited, false);		
 		
-		bfs(V);
+		bfs(start);
 		System.out.println(st);
 		sb.setLength(0);					
 		Arrays.fill(visited, false);		
