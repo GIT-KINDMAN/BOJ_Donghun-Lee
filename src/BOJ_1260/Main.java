@@ -1,45 +1,83 @@
 package BOJ_1260;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
-
 public class Main {
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+	
+	static int[][] graph;
+	static boolean[] visited = new boolean[1001];	
+	static int V, E;
+	
+	static Queue<Integer> q = new LinkedList<>();
+	static StringBuilder sb = new StringBuilder();
+	
+	public static void main(String[] args) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		V = Integer.parseInt(st.nextToken());
+		E = Integer.parseInt(st.nextToken());
+		int start = Integer.parseInt(st.nextToken());
+		
+		graph = new int[V+1][E+1];
+		
+		for (int i = 0; i < V; i++) {
+			st = new StringTokenizer(br.readLine());
+			int node1 = Integer.parseInt(st.nextToken());
+			int node2 = Integer.parseInt(st.nextToken());
+			
+			graph[node1][node2] = 1;
+			graph[node2][node1] = 1;
+		}
+		
+		dfs(start);
+		sb.append("\n");
+		Arrays.fill(visited, false);		
+		
+		bfs(start);
+		System.out.println(st);
+		sb.setLength(0);					
+		Arrays.fill(visited, false);		
+		
+	}
+	
+	private static void dfs(int v) {		
+		
+		visited[v] = true;
+		sb.append(v).append(" ");
+		
+		//recursive
+		for (int i = 1; i <= V; i++) {
+			if(graph[v][i] == 1 && !visited[i]) { 
+				dfs(i);
+			}
+		}
+	}
 
-        int V = Integer.parseInt(st.nextToken());
-        int E = Integer.parseInt(st.nextToken());
-        int start = Integer.parseInt(st.nextToken());
+	static void bfs(int v) {
 
-        int[][] map = new int[E][E];
-        boolean[] visited = new boolean[V];
-
-        for(int i=0; i<V; i++){
-            for(int j=0; i<V; j++) {
-                map[i][j] = 0;
-            }
-        }
-        for (int i = 0; i < E; i++) {
-            st = new StringTokenizer(br.readLine());
-            int x = Integer.parseInt(st.nextToken());
-            int y = Integer.parseInt(st.nextToken());
-            map[x][y] = 1;
-            map[y][x] = 1; // 무방향 그래프 = 대칭행렬
-        }
-
-        dfs(start, map, visited);
-    }
-
-    static void dfs(int v, int[][] m, boolean[] visited) {
-        visited[v] = true;
-        System.out.print(v + 1 + " ");
-
-        for (int i = 1; i <= m.length - 1; i++) {
-            if (!visited[i]) {
-                dfs(i,m,visited);
-            }
-        }
-    }
+		q.add(v);
+		visited[v] = true;
+		
+		while(!q.isEmpty()) {
+			
+			v = q.poll();
+			sb.append(v).append(" ");
+			
+			for (int i = 1; i <= V; i++) {
+				if(graph[v][i] == 1 && !visited[i]) {
+					q.add(i);			
+					visited[i] = true;
+				}
+			}
+		}
+		q.clear();
+	}
 }
