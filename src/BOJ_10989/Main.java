@@ -1,4 +1,4 @@
-package test;
+package BOJ_10989;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -14,7 +14,6 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
 
         int[] arr = new int[N];
-        // ArrayList<Integer> list = new ArrayList<Integer>();
 
         for (int i = 0; i < N; i++) {
             arr[i]=Integer.parseInt(br.readLine());
