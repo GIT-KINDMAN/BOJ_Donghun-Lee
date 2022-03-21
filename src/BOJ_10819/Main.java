@@ -30,23 +30,21 @@ public class Main {
 
         med = N / 2;
 
-        if (N == 3) { // 엣지 케이스... 한 번에 처리할 방법은?
-            ans[0] = arr[0];
-            ans[1] = arr[2];
-            ans[2] = arr[1];
-        } else {
-            ans[0] = arr[med];
-
-            int start = 0, end = N - 1;
-            for (int i = 1; i < N; i = i + 2) {
-                ans[i] = arr[start];
-                if (end != med) {
-                    ans[i + 1] = arr[end];
-                }
-                start++;
-                end--;
-            }
+        if (N % 2 == 0) {
+            med -= 1;
         }
+        ans[0] = arr[med];
+
+        int start = 0, end = N - 1;
+        for (int i = 1; i < N; i = i + 2) {
+            ans[i] = arr[end];
+            if (start != med) {
+                ans[i+1] = arr[start];
+            }
+            start++;
+            end--;
+        }
+
         for (int i = 0; i < N - 1; i++) {
             sum += Math.abs(ans[i + 1] - ans[i]);
         }

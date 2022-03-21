@@ -1,12 +1,15 @@
 package BOJ_1759;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
 
     static char[] arr;
-    static int[] check;
+    static int[] checked;
     static int L, C;
 
     public static void main(String[] args) throws IOException {
@@ -16,7 +19,7 @@ public class Main {
         L = Integer.parseInt(st.nextToken());
         C = Integer.parseInt(st.nextToken());
         arr = new char[C];
-        check = new int[C];
+        checked = new int[C];
 
         st = new StringTokenizer(br.readLine());
         for (int i = 0; st.hasMoreTokens(); i++) {
@@ -37,7 +40,7 @@ public class Main {
             int con = 0;
 
             for (int i = 0; i < L; i++) {
-                if (check[i] == 1) {
+                if (checked[i] == 1) {
                     if (isVowel(arr[i])) {
                         vow++;
                     } else {
@@ -54,9 +57,9 @@ public class Main {
 
         } else {
             for (int i = depth; i < C; i++) {
-                check[i] = 1;
+                checked[i] = 1;
                 dfs(i + 1, length + 1);
-                check[i] = 0;
+                checked[i] = 0;
             }
         }
     }
