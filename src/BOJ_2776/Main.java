@@ -13,7 +13,7 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         int T = Integer.parseInt(br.readLine());
-        while (T-->0) {
+        while (T-- > 0) {
             HashSet<Integer> set = new HashSet<Integer>();
 
             int N = Integer.parseInt(br.readLine());
