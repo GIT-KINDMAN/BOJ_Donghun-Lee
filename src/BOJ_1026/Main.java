@@ -1,4 +1,4 @@
-package BOJ_1026;
+package BOJ_1026; 
 
 import java.io.BufferedReader;
 import java.io.IOException;
